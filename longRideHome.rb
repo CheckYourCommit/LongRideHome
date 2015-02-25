@@ -45,6 +45,11 @@ $spaceController = " "
 
 while $length > 0
 
+	$nextCity = rand(5..25).to_i
+	cityAfter = $nextCity * 2
+	inTown = true
+
+
 	while inTown 
 
 		trainTicket = ($nextCity*2) * 3
@@ -268,9 +273,4 @@ while $length > 0
 			end
 		end
 	end
-
-	$nextCity = rand(5..25).to_i
-	cityAfter = $nextCity * 2
-	inTown = true
-
 end
