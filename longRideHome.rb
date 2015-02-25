@@ -1,4 +1,3 @@
-
 $length = 3000
 $wallet = 4000
 
@@ -105,7 +104,11 @@ while $length > 0
 			action = gets.chomp
 
 			if action.casecmp("walk") == 0
-				require_relative "walk.rb"
+
+				load 'E:/RubyStuffs/LongRideHome/lib/walk.rb'
+
+				extend Walking
+
 				puts "does stuff"
 
 			elsif action.casecmp("town") == 0
