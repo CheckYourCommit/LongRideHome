@@ -1,6 +1,6 @@
-module Walking
+class Walking
+	def initialize(nc, length)
 	puts "You start your walk!"
-	nc = $nextCity
 	spaceEcho = (74.0 / nc)
 	puts "#{spaceEcho}"
 		while nc > 0
@@ -40,11 +40,12 @@ module Walking
 			puts "#{actionBottom}"
 
 			nc = nc.pred
-			$length = $length.pred
+			length = length
 			sleep(1.0 / 3.0)
 
 			$spaceController = $spaceController + (" " * spaceEcho)
 			inTown = false
 		end
 	$spaceController = " "
+	end
 end

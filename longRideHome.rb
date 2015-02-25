@@ -112,7 +112,7 @@ while $length > 0
 
 				load 'E:/RubyStuffs/LongRideHome/lib/walk.rb'
 
-				extend Walking
+				Walking.new($nextCity, $length)
 
 				puts "does stuff"
 
