@@ -1,5 +1,5 @@
-$length = 3000
-$wallet = 4000
+length = 3000
+wallet = 4000
 
 puts ""
 puts ""
@@ -27,7 +27,7 @@ puts "                         Welcome to Long Ride Home!"
 puts ""
 puts ""
 puts "         You woke up in a strange town on the other side of the country"
-puts "           and need to get home. You check your wallet. You have $#{$wallet}"
+puts "           and need to get home. You check your wallet. You have #{wallet}"
 puts ""
 puts ""
 puts ""
@@ -38,22 +38,22 @@ puts ""
 sleep(5)
 
 
-$nextCity = rand(5..25).to_i
-$cityAfter = $nextCity * 2
+nextCity = rand(5..25).to_i
+cityAfter = nextCity * 2
 inTown = true
-$spaceController = " "
+spaceController = " "
 
-while $length > 0
+while length > 0
 
-	$nextCity = rand(5..25).to_i
-	cityAfter = $nextCity * 2
+	nextCity = rand(5..25).to_i
+	cityAfter = nextCity * 2
 	inTown = true
 
 
 	while inTown 
 
-		trainTicket = ($nextCity*2) * 3
-	    busTicket = $nextCity * 2
+		trainTicket = (nextCity*2) * 3
+	    busTicket = nextCity * 2
 
 
 	    puts ""
@@ -61,7 +61,7 @@ while $length > 0
 	    puts ""
 	    puts ""
 	    puts ""
-	    puts "                                                         wallet: $#{$wallet}"
+	    puts "                                                         wallet: #{wallet}"
 	    puts ""
 	    puts ""
 	    puts "    _________              _________               _________           "
@@ -74,7 +74,7 @@ while $length > 0
 		puts "  |        |       ||   ||        |        ||   ||        |        |   "
 		puts "  -----------------------Welcome to Town------------------------------ "
 		puts ""
-		puts "You are #{$length} miles from home"
+		puts "You are #{length} miles from home"
 		puts ""
 		puts "What would you like to do?"
 		puts "        Walk                             (walk)"
@@ -84,7 +84,7 @@ while $length > 0
 		action = gets.chomp
 
 		if action.casecmp("walk") == 0
-			time = $nextCity / 2
+			time = nextCity / 2
 			puts "                                                                   "
 			puts "                                                                   "
 			puts "                                                                   "
@@ -104,17 +104,58 @@ while $length > 0
 			puts "                           ||                                      "
 			puts "                                                                   "
 			puts "                                                                   "
-			puts "You can get to the next city (#{$nextCity} miles) in #{time} seconds"
+			puts "You can get to the next city (#{nextCity} miles) in #{time} seconds"
 			puts "Walk (walk)          Go back to town (town)"
 			action = gets.chomp
 
 			if action.casecmp("walk") == 0
 
-				load 'E:/RubyStuffs/LongRideHome/lib/walk.rb'
+				puts "You start your walk!"
+				spaceEcho = (74.0 / nextCity)
+			while nextCity > 0
 
-				Walking.new($nextCity, $length)
+			if nextCity % 2 == 0
+				actionTop = spaceController +     " o"
+				actionMiddle = spaceController +  "-|-"
+				actionBottom = spaceController +  " ^"
+			else
+				actionTop = spaceController +     " o"
+				actionMiddle = spaceController +  " |-"
+				actionBottom = spaceController +  " ^"
+			end
 
-				puts "does stuff"
+			puts ""
+			puts ""
+			puts ""
+			puts ""
+			puts ""
+			puts ""
+			puts ""
+			puts ""
+			puts ""
+			puts ""
+			puts ""
+			puts ""
+			puts ""
+			puts ""
+			puts ""
+			puts ""
+			puts ""
+			puts ""
+			puts ""
+			puts ""
+			puts "#{actionTop}"
+			puts "#{actionMiddle}"
+			puts "#{actionBottom}"
+
+			nextCity = nextCity.pred
+			length = length.pred
+			sleep(1.0 / 3.0)
+
+			spaceController = spaceController + (" " * spaceEcho)
+			inTown = false
+		end
+	spaceController = " "
 
 			elsif action.casecmp("town") == 0
 				puts "You have gone back to town"
@@ -141,14 +182,14 @@ while $length > 0
 			puts "       |                     |    |                       |        " 
 			puts "        +++++++++++++++++++++|    |++++++++++++++++++++++++        "
 			puts "                                                                   "
-			puts "You can get two cities over (#{cityAfter} miles) for $#{trainTicket}"
+			puts "You can get two cities over (#{cityAfter} miles) for #{trainTicket}"
 			puts "Buy Ticket (Buy)          Leave the station (Leave)"
 			action = gets.chomp
 
 			if action.casecmp("buy") == 0
-				if $wallet > trainTicket
+				if wallet > trainTicket
 					puts "You have bought a ticket! All Aboard!"
-					$wallet = $wallet - trainTicket
+					wallet = wallet - trainTicket
 					spaceEcho = (66.0 / cityAfter)
 					while cityAfter > 0
 						actionTop = spaceController +     " |DD|____T_"
@@ -182,7 +223,7 @@ while $length > 0
 						puts "#{actionBottom}"
 
 						cityAfter = cityAfter.pred
-						$length = $length.pred
+						length = length.pred
 						sleep(1.0 / 10.0)
 
 						spaceController = spaceController + (" " * spaceEcho)
@@ -215,16 +256,16 @@ while $length > 0
 			puts "       |                     |    |                       |        " 
 			puts "                                                                   "			
 			puts ""
-			puts "You can get to the next city (#{cityAfter} miles) for $#{busTicket}"
+			puts "You can get to the next city (#{cityAfter} miles) for #{busTicket}"
 			puts "Buy Ticket (Buy)          Leave the terminal (Leave)"
 			action = gets.chomp
 
 			if action.casecmp("buy") == 0
-				if $wallet > busTicket
+				if wallet > busTicket
 					puts "You have bought a ticket! Go on in!"
-					$wallet = $wallet - busTicket
-					spaceEcho = (74.0 / $nextCity)
-					while $nextCity > 0
+					wallet = wallet - busTicket
+					spaceEcho = (74.0 / nextCity)
+					while nextCity > 0
 						
 						actionTop = spaceController +     "[o>][o]\\"
 						actionMiddle = spaceController +  "L_______&"
@@ -256,8 +297,8 @@ while $length > 0
 						puts "#{actionMiddle}"
 						puts "#{actionBottom}"
 
-						$nextCity = $nextCity.pred
-						$length = $length.pred
+						nextCity = nextCity.pred
+						length = length.pred
 						sleep(1.0 / 5.0)
 
 						spaceController = spaceController + (" " * spaceEcho)
