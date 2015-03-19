@@ -1,10 +1,11 @@
-module Walking
+class Walking
+	def initialize(nc, length)
 	puts "You start your walk!"
-	spaceEcho = (74.0 / $nextCity)
+	spaceEcho = (74.0 / nc)
 	puts "#{spaceEcho}"
-		while $nextCity > 0
+		while nc > 0
 
-			if $nextCity % 2 == 0
+			if nc % 2 == 0
 				actionTop = $spaceController +     " o"
 				actionMiddle = $spaceController +  "-|-"
 				actionBottom = $spaceController +  " ^"
@@ -38,12 +39,13 @@ module Walking
 			puts "#{actionMiddle}"
 			puts "#{actionBottom}"
 
-			$nextCity = $nextCity.pred
-			$length = $length.pred
+			nc = nc.pred
+			length = length
 			sleep(1.0 / 3.0)
 
 			$spaceController = $spaceController + (" " * spaceEcho)
 			inTown = false
 		end
 	$spaceController = " "
+	end
 end
